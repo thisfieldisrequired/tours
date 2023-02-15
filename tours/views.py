@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotFound, HttpResponseServerError
 from django.shortcuts import render
 
 
@@ -11,3 +12,11 @@ def departure_view(request, departure):
 
 def tour_view(request, tour_id):
     return render(request, 'tours/tour.html')
+
+
+def custom_handler404(request, exception):
+    return HttpResponseNotFound("Page not found")
+
+
+def custom_handler500(request):
+    return HttpResponseServerError("Server error")
