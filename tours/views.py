@@ -3,9 +3,19 @@ from django.shortcuts import render
 from django.views import View
 
 
+class MainPageView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "tours/index.html", {})
+
+
+class AboutPageView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "tours/about.html", {})
+
+
 class TestView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'tours/test.html', {})
+        return render(request, 'tours/test.html', {'name': 'Alex', 'place': 'Here'})
 
 
 def main_view(request):
