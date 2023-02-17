@@ -14,10 +14,6 @@ def tour_view(request, tour_id):
     return render(request, 'tours/tour.html')
 
 
-def boot_view(request):
-    return render(request, 'tours/boot.html')
-
-
 def custom_handler404(request, exception):
     return HttpResponseNotFound("Page not found")
 
