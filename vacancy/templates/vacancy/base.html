@@ -8,7 +8,11 @@
 <body>
 
   <header>
-    <nav>menu</nav>
+    <nav>
+      {% for link in links %}
+        <a href="{{ link.link }}/">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
   </header>
 
   <div class="container">
