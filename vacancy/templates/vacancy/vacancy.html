@@ -5,7 +5,8 @@
     <h2>Categories</h2>
     <nav>
       {% for cat in categories %}
-        <a href="{{ cat.id }}/">{{ cat.title }}</a>
+        {% url "vacancy" as vac_url %}
+        <a href="{% url 'vacancy' cat.id %}">{{ cat.title }}</a>
       {% endfor %}
     </nav>
 </div>

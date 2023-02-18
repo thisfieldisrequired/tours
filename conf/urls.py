@@ -26,7 +26,7 @@ urlpatterns = [
     path('departure/<int:departure>', departure_view),
     path('tour/<int:tour_id>', tour_view),
     path('test/', TestView.as_view()),
-    path('vacancy/', VacancyView.as_view()),
+    path('vacancy/<str:id>/', VacancyView.as_view(), name="vacancy"),
 ]
 
 handler404 = custom_handler404
