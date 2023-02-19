@@ -15,16 +15,16 @@ def departure_view(request, departure):
     return render(request, 'tours/departure.html')
 
 
-def tour_view(request, tour_id):
-    return render(request, 'tours/tour.html')
-
-
 def custom_handler404(request, exception):
     return HttpResponseNotFound("Page not found")
 
 
 def custom_handler500(request):
     return HttpResponseServerError("Server error")
+
+
+def tour_view(request, tour_id):
+    return render(request, 'tours/tour.html', {'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
 
 
 title = "Stepik Travel"
