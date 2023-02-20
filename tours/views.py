@@ -24,7 +24,8 @@ def custom_handler500(request):
 
 
 def tour_view(request, tour_id):
-    return render(request, 'tours/tour.html', {'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
+    stars = "★" * int(tours[tour_id]['stars'])
+    return render(request, 'tours/tour.html', {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
 
 
 title = "Stepik Travel"
