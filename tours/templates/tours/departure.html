@@ -2,19 +2,23 @@
 {% block departure %}
   <main class="container mt-3">
     <h1 class="display-5 mt-4">Летим из {{ departure }}</h1>
-    <p class="mb-4">Найдено {{ sum }} туров, от {{ min_value }} до {{ max_value }} и от {{ min_nights }} ночей до {{ max_nights }} ночей</p>
+    <p class="mb-4">Найдено {{ departure_description.sum }} туров, от {{ departure_description.min_value }} до {{ departure_description.max_value }} и от {{ departure_description.min_nights }} ночей до {{ departure_description.max_nights }} ночей</p>
     <!-- CARDS -->
+
     <div class="row mt-5">
+      {% for key, value in my_tours.items %}
       <div class="col-4">
         <div class="card mb-4">
           <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
           <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h2 class="h5 card-title">{{ value.title }}</h2>
+            <p class="card-text">{{ value.description }}</p>
             <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
+
   </main>
 {% endblock departure %}

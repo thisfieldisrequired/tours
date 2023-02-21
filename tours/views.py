@@ -21,31 +21,32 @@ def custom_handler500(request):
 
 def tour_view(request, tour_id):
     stars = "★" * int(tours[tour_id]['stars'])
-    return render(request, 'tours/tour.html', {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
+    return render(request, 'tours/tour.html',
+                  {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
 
 
 def departure_view(request, departure_title):
     departure_from = tours[departure_title]['departure']
     departure_name = departures[departure_from][3:]
-    sum = 0
-    min_value = 1000000
-    max_value = 0
-    min_nights = 1000000
-    max_nights = 0
+    departure_description = {'sum': 0, 'min_value': 1000000, 'max_value': 0, 'min_nights': 1000000, 'max_nights': 0}
+    my_tours = {}
 
     for value, item in tours.items():
         if item['departure'] == departure_from:
-            sum += 1
-            if item['price'] < min_value:
-                min_value = item['price']
-            if item['price'] > max_value:
-                max_value = item['price']
-            if item['nights'] < min_nights:
-                min_nights = item['nights']
-            if item['nights'] > max_nights:
-                max_nights = item['nights']
-
-    return render(request, 'tours/departure.html', {'departure': departure_name, 'min_nights': min_nights, 'max_nights': max_nights, 'max_value': max_value, 'sum': sum, 'min_value': min_value})
+            departure_description['sum'] += 1
+            my_tours[value] = tours[value]
+            if item['price'] < departure_description['min_value']:
+                departure_description['min_value'] = item['price']
+            if item['price'] > departure_description['max_value']:
+                departure_description['max_value'] = item['price']
+            if item['nights'] < departure_description['min_nights']:
+                departure_description['min_nights'] = item['nights']
+            if item['nights'] > departure_description['max_nights']:
+                departure_description['max_nights'] = item['nights']
+    for tour in my_tours:
+        print(tour)
+    return render(request, 'tours/departure.html',
+                  {'departure': departure_name, 'departure_description': departure_description, 'my_tours': my_tours})
 
 
 title = "Stepik Travel"
