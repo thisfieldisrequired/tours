@@ -24,9 +24,28 @@ def tour_view(request, tour_id):
     return render(request, 'tours/tour.html', {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
 
 
-def departure_view(request, departure):
-    departure = departure
-    return render(request, 'tours/departure.html', {'departure': departure})
+def departure_view(request, departure_title):
+    departure_from = tours[departure_title]['departure']
+    departure_name = departures[departure_from][3:]
+    sum = 0
+    min_value = 1000000
+    max_value = 0
+    min_nights = 1000000
+    max_nights = 0
+
+    for value, item in tours.items():
+        if item['departure'] == departure_from:
+            sum += 1
+            if item['price'] < min_value:
+                min_value = item['price']
+            if item['price'] > max_value:
+                max_value = item['price']
+            if item['nights'] < min_nights:
+                min_nights = item['nights']
+            if item['nights'] > max_nights:
+                max_nights = item['nights']
+
+    return render(request, 'tours/departure.html', {'departure': departure_name, 'min_nights': min_nights, 'max_nights': max_nights, 'max_value': max_value, 'sum': sum, 'min_value': min_value})
 
 
 title = "Stepik Travel"
