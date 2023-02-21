@@ -11,10 +11,6 @@ def main_view(request):
     return render(request, 'tours/index.html')
 
 
-def departure_view(request, departure):
-    return render(request, 'tours/departure.html')
-
-
 def custom_handler404(request, exception):
     return HttpResponseNotFound("Page not found")
 
@@ -26,6 +22,11 @@ def custom_handler500(request):
 def tour_view(request, tour_id):
     stars = "★" * int(tours[tour_id]['stars'])
     return render(request, 'tours/tour.html', {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
+
+
+def departure_view(request, departure):
+    departure = departure
+    return render(request, 'tours/departure.html', {'departure': departure})
 
 
 title = "Stepik Travel"
