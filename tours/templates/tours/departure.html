@@ -1,5 +1,5 @@
 {% extends 'tours/base.html' %}
-{% block departure %}
+{% block content %}
   <main class="container mt-3">
     <h1 class="display-5 mt-4">Летим из {{ departure }}</h1>
     <p class="mb-4">Найдено {{ departure_description.sum }} туров, от {{ departure_description.min_value }} до {{ departure_description.max_value }} и от {{ departure_description.min_nights }} ночей до {{ departure_description.max_nights }} ночей</p>
@@ -21,4 +21,4 @@
     </div>
 
   </main>
-{% endblock departure %}
+{% endblock content %}
