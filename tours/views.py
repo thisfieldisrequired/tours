@@ -1,6 +1,7 @@
 from django.http import HttpResponseNotFound, HttpResponseServerError
 from django.shortcuts import render
 from django.views import View
+from random import randint, sample
 
 
 def test(request):
@@ -8,7 +9,11 @@ def test(request):
 
 
 def main_view(request):
-    return render(request, 'tours/index.html')
+    randlist = sample([i for i in range(1, len(tours) + 1)], 6)
+    vars = {}
+    for i in randlist:
+        vars[i] = tours.get(i, i)
+    return render(request, 'tours/index.html', {'vars': vars})
 
 
 def custom_handler404(request, exception):
