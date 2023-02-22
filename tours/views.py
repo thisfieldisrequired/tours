@@ -43,8 +43,6 @@ def departure_view(request, departure_title):
                 departure_description['min_nights'] = item['nights']
             if item['nights'] > departure_description['max_nights']:
                 departure_description['max_nights'] = item['nights']
-    for tour in my_tours:
-        print(tour)
     return render(request, 'tours/departure.html',
                   {'departure': departure_name, 'departure_description': departure_description, 'my_tours': my_tours})
 
