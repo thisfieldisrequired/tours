@@ -4,5 +4,5 @@ register = template.Library()
 
 
 @register.simple_tag
-def stars():
-    return '★'
+def stars(number):
+    return '★' * int(number)
