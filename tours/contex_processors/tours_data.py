@@ -1,5 +1,10 @@
 def tours_data(request):
-    tours = {
+    return tours
+
+departures = {"msk": "Из Москвы", "spb": "Из Петербурга", "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
+              "kazan": "Из Казани"}
+
+tours = {
         1: {
             "title": "Marina Lake Hotel & Spa",
             "description": "Отель выглядит уютно. Он был построен из красного соснового дерева и украшен синими камнями.  "
@@ -239,5 +244,10 @@ def tours_data(request):
         }
 
     }
+for tour_key, tour_value in tours.items():
+    tours[tour_key].update({"departure_in_russian": 'None'})
 
-    return tours
+for tour_key, tour_value in tours.items():
+    for departure_key, departure_value in departures.items():
+        if tour_value['departure'] == departure_key:
+            tours[tour_key]['departure_in_russian'] = departures[departure_key]
