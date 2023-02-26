@@ -1,6 +1,3 @@
-def tours_data(request):
-    return tours
-
 departures = {"msk": "Из Москвы", "spb": "Из Петербурга", "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
               "kazan": "Из Казани"}
 
@@ -244,10 +241,12 @@ tours = {
         }
 
     }
-for tour_key, tour_value in tours.items():
-    tours[tour_key].update({"departure_in_russian": 'None'})
 
 for tour_key, tour_value in tours.items():
     for departure_key, departure_value in departures.items():
         if tour_value['departure'] == departure_key:
-            tours[tour_key]['departure_in_russian'] = departures[departure_key]
+            tours[tour_key].update({"departure_in_russian": departures[departure_key][0].lower() + departures[departure_key][1:]})
+
+
+def tours_data(request):
+    return tours

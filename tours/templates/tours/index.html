@@ -9,8 +9,12 @@
     </section>
     <!-- CARDS -->
     <div class="row mt-5">
-      <p>11111111111111{{ 2.departure_in_russian|first|lower }}</p>
-      {% for key, value in vars.items %}
+      {{ 1.title }}
+      {{ random_list }}
+      {% for value in random_list %}
+        {{ tours_data.value.title }}
+      {% endfor %}
+      {% for value in random_list.values %}
 
       <div class="col-4">
         <div class="card mb-4">

@@ -9,11 +9,13 @@ def test(request):
 
 
 def main_view(request):
-    randlist = sample([i for i in range(1, len(tours) + 1)], 6)
-    vars = {}
-    for i in randlist:
-        vars[i] = tours.get(i, i)
-    return render(request, 'tours/index.html', {'vars': vars})
+    random_list = sample([i for i in range(1, len(tours) + 1)], 6)
+    for item in random_list:
+        print(f"!!!!!!!!!!!!!!!!!!!!!!!!{item}")
+    # vars = {}
+    # for i in randlist:
+    #     vars[i] = tours.get(i, i)
+    return render(request, 'tours/index.html', {'random_list': random_list})
 
 
 def custom_handler404(request, exception):
@@ -25,9 +27,7 @@ def custom_handler500(request):
 
 
 def tour_view(request, tour_id):
-    stars = "★" * int(tours[tour_id]['stars'])
-    return render(request, 'tours/tour.html',
-                  {'stars': stars, 'tours': tours[tour_id], 'departures': departures[tours[tour_id]['departure']]})
+    return render(request, 'tours/tour.html', {'tours': tours[tour_id]})
 
 
 def departure_view(request, departure_title):
