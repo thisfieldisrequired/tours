@@ -20,10 +20,9 @@ from tours.views import main_view, departure_view, tour_view, custom_handler404,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_view),
-    path('departure/<int:departure_title>/', departure_view),
-    path('tour/<int:tour_id>/', tour_view),
-    path('test/', test),
+    path('', main_view, name='main'),
+    path('departure/<int:departure_title>/', departure_view, name='departure'),
+    path('tour/<int:tour_id>/', tour_view, name='tour'),
 ]
 
 handler404 = custom_handler404
