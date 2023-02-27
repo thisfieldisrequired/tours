@@ -9,12 +9,7 @@
     </section>
     <!-- CARDS -->
     <div class="row mt-5">
-      {{ 1.title }}
-      {{ random_list }}
-      {% for value in random_list %}
-        {{ tours_data.value.title }}
-      {% endfor %}
-      {% for value in random_list.values %}
+      {% for key, value in tours_list.items %}
 
       <div class="col-4">
         <div class="card mb-4">
@@ -24,7 +19,7 @@
           <div class="card-body">
             <h2 class="h5 card-title">{{ value.title }}</h2>
             <p class="card-text">{{ value.description }}</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
+            <a href="{% url 'tour' key %}" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>
       </div>
