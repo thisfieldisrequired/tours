@@ -1,8 +1,10 @@
 from django import template
 
-
 register = template.Library()
 
-@register.simple_tag
-def stars_data(number):
+
+def get_stars_data(number):
     return '★' * int(number)
+
+
+register.filter('get_stars_data', get_stars_data)

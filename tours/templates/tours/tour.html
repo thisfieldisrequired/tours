@@ -1,11 +1,9 @@
 {% extends 'tours/base.html' %}
-{% load static %}
 {% load stars_data %}
-{% stars_data tours.stars as star1 %}
 {% block content %}
   <main class="container">
     <section class="mt-3 pb-5">
-      <h1 class="display-3 mt-4">{{ tours.title }} {{ star1 }}</h1>
+      <h1 class="display-3 mt-4">{{ tours.title }} {{ tours.stars|get_stars_data }}</h1>
       <!-- HERO -->
 
       <p class="lead">{{ tours.country }} {{ tours.departures }} {{ tours.nights }} ночей </p>
