@@ -18,7 +18,7 @@
           </div>
           <div class="card-body">
             <h2 class="h5 card-title">{{ value.title }}</h2>
-            <p class="card-text">{{ value.description }}</p>
+            <p class="card-text">{{ value.description|slice:'100' }}...</p>
             <a href="{% url 'tour' key %}" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>

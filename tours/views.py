@@ -4,10 +4,6 @@ from django.views import View
 from random import randint, sample
 
 
-def test(request):
-    return render(request, 'tours/base.html', {})
-
-
 def main_view(request):
     random_list = sample([i for i in range(1, len(tours) + 1)], 6)
     tours_list = {}
